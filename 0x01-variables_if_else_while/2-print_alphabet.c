@@ -16,7 +16,7 @@ int main(void)
 		ch++;
 		j++;
 		if (j == 26)
-		putchar ('\n)
+		putchar ('\n');
 	}
 	return (0);
 }
