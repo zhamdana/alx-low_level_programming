@@ -1,28 +1,23 @@
 #include <stdio.h>
 /**
-*main - print numbers from 0 to 9 with comma and space
+*main - print numbers from 0 to 9 with comma and space in all possible combinations
 *Return: 0 if successful
 */
 int main(void)
 {
 	int i, j;
 
-	i = 48;
-	j = 48;
-	while (j < 58)
+	for (i = 0; i < 9; i++)
 	{
-		i = 48;
-		while (i < 58)
+		for (j = i + 1; j < 10; j++)
 		{
-			putchar(j);
-			putchar(i);
-			if (i == 57 && j == 57)
-				break;
+			putchar((i % 10) + '0');
+			putchar((j % 10) + '0');
+			if (i == 8 && j == 9)
+				continue;
 			putchar(',');
 			putchar(' ');
-			i++;
 		}
-		j++;
 	}
 	putchar('\n');
 	return (0);
