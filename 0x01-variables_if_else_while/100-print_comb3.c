@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
-*main - print numbers from 0 to 9 with comma and space in all possible combinations
+*main - print numbers all possible number combination
 *Return: 0 if successful
 */
 int main(void)
