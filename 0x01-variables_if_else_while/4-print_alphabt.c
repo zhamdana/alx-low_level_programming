@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
-*main - print alphabets in lowercase
+*main - prints lowercase except q and e
 *Return: 0 if successful
 */
 int main(void)
@@ -10,13 +10,17 @@ int main(void)
 
 	j = 0;
 
-	while (j != 26)
-	{
-		putchar (ch);
+		while (j != 24)
+		{
+		if (ch == 'e')
 		ch++;
+		if (ch == 'q')
+		ch++;
+		putchar (ch);
 		j++;
-		if (j == 26)
+		ch++;
+		if (j == 24)
 		putchar ('\n');
-	}
+		}
 	return (0);
 }
