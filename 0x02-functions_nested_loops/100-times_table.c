@@ -25,19 +25,19 @@ int k;
 				{
 					_putchar(' ');
 					_putchar(' ');
-					_putchar(op + '0');
+					_putchar(k + '0');
 				}
 				else if (op <= 99)
 				{
 					_putchar('0');
-					_putchar((op / 10) + '0');
-					_putchar((op % 10) + '0');
+					_putchar((k / 10) + '0');
+					_putchar((k % 10) + '0');
 				}
 				else
 				{
-					_putchar(((op / 100) % 10) + '0');
-					_putchar(((op / 10) % 10) + '0');
-					_putchar((op % 10) + '0');
+					_putchar(((k / 100) % 10) + '0');
+					_putchar(((k / 10) % 10) + '0');
+					_putchar((k % 10) + '0');
 				}
 			}
 			_putchar('\n');
