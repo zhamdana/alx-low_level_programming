@@ -27,7 +27,7 @@ int k;
 					_putchar(' ');
 					_putchar(k + '0');
 				}
-				else if (op <= 99)
+				else if (k <= 99)
 				{
 					_putchar('0');
 					_putchar((k / 10) + '0');
