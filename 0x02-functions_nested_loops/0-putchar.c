@@ -10,7 +10,7 @@ int main(void)
 	int c, s;
 
 	s = sizeof(word) / sizeof(int);
-	for (c =0; c < s; c++)
+	for (c = 0; c < s; c++)
 	{
 		_putchar(word[c]);
 	}
