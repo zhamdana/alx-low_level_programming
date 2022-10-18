@@ -1,15 +1,27 @@
 #include "main.h"
 
 /**
- *_isalpha - checks for alphabetic characters
- *Return: returns 0 or 1 when successful
- *@c: the parameter to be used in the function
+ *print_sign - Prints the sign of a number
+ *Return: returns 1, 0, or -1 when successful
+ *@n: the parameter to be used in the function
  */
-int _isalpha(int n)
+int print_sign(int n)
 {
-	if ((c > 96 && c < 123) || (c > 64 && c < 91))
+	if (n > 0)
+	{
+		_putchar('+');
 		return (1);
-	else
+	}
+	if else(n == 0)
+	{
+		_putchar('0');
 		return (0);
+	}
+	else
+		(n < 0)
+	{
+		_putchar('-');
+		return (-1);
+	}
 	_putchar('\n');
 }
