@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	long double c, s, f1, f2;
+	long int c, s, f1, f2;
 
 	f1 = 1;
 	f2 = 2;
