@@ -12,7 +12,7 @@ int main(void)
 
 	for (c = 0; c < 92; c++)
 	{
-		sum = f1 + f2;
+		s = f1 + f2;
 		printf("%lu, ", s);
 
 		f1 = f2;
