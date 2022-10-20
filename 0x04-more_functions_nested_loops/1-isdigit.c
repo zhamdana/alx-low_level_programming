@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *_isupper - discovers numbers between 0 to 9
+ *_isdigit - discovers numbers between 0 to 9
  *@c: is an input character
  * Return: Always 0.
  */
