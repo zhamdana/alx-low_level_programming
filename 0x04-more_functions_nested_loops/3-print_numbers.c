@@ -8,6 +8,6 @@ void print_numbers(void)
 	int i;
 
 	for (i = 48; i < 58; i++)
-		_putchar(i);
+		_putchar((i % 10) + '48');
 	_putchar('\n');
 }
