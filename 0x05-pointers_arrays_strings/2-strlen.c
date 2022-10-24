@@ -1,12 +1,13 @@
 #include "main.h"
 /**
-  * void swap_int - swap values of integers
-  *@a: integer.
-  *@b: integer
+  *_strlen - returns length of string
+  *@s: integer.
+  *Return: returns the specified value
   **/
-void swap_int(int *a, int *b);
+int _strlen(char *s)
 {
-	int swp = *a;
-	*a = *b;
-	*b = swp;
+	int l = 0;
+
+	for (l = 0; s[l] != '\0'; i++)
+	return (l);
 }
