@@ -1,7 +1,7 @@
 #include "main.h"
 /**
-  * strcat - concatenates two strings
-  * @dst: a pinter
+  * _strcat - concatenates two strings
+  * @dest: a pinter
   * @src: source string
   * Return: returns to dest
   **/
