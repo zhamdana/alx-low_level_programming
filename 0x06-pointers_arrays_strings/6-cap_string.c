@@ -21,7 +21,7 @@ char *cap_string(char *i)
 		    i[j] == 41 || i[j] == 123 ||
 		    i[j] == 125)
 			i[j] -= 32;
-		j++;
+			j++;
 	}
 	return (i);
 }
