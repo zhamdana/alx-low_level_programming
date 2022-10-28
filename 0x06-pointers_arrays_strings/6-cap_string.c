@@ -8,6 +8,7 @@ char *cap_string(char *i)
 {
 	int j;
 
+	j = 0;
 	while (i[j])
 	{
 		while (!(i[j] >= 97 && i[j] <= 'z'))
