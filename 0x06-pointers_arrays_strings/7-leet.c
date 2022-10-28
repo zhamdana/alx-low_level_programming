@@ -6,12 +6,11 @@
   **/
 char *leet(char *i)
 {
-	int j, k;
+	int j, k = 0;
 	char a1[] = "43071";
 	char a2[] = "aeotl";
 	char a3[] = "AEOTL";
 
-	j, k = 0;
 	for (j = 0; i[j] != '\0'; j++)
 	{
 		k = 0;
