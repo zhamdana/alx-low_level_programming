@@ -14,7 +14,7 @@ char *leet(char *i)
 	for (j = 0; i[j] != '\0'; j++)
 	{
 		k = 0;
-		while (!(a2[k] == i[j] || a3[k] == i[j]) && k < 6)
+		while (!(a2[k] == i[j] || a3[k] == i[j]) && k <= 5)
 			k++;
 		if (a2[k] == i[j] || a3[k] == i[j])
 			a1[j] = a1[k];
