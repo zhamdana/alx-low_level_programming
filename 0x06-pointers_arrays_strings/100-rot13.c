@@ -13,7 +13,7 @@ char *rot13(char *i)
 
 	for (j = 0; i[j] != '\0'; j++)
 	{
-		j = 0;
+		k = 0;
 		while (!(a2[k] == i[j]) && k <= 52)
 			k++;
 		if (a2[k] == i[j])
