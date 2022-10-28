@@ -1,27 +1,23 @@
-#include "main.h"
+#include "holberton.h"
 /**
-  * *cap_string - capitalizes all words of a string
-  * @i: input string
-  * Return: return i
-  **/
-char *cap_string(char *i)
+ **cap_string - do something
+ *@s: do somerhing
+ *Return: something
+ */
+char *cap_string(char *s)
 {
-	int j;
-
-	j = 0;
-	while (i[j])
-	{
-		while (!(i[j] >= 97 && i[j] <= 122))
-			j++;
-		if (i[j] == 32 || i[j] == 9 ||
-		    i[j] == 10 || i[j] == 44 ||
-		    i[j] == 59 || i[j] == 46 ||
-		    i[j] == 33 || i[j] == 63 ||
-		    i[j] == 34 || i[j] == 40 ||
-		    i[j] == 41 || i[j] == 123 ||
-		    i[j] == 125)
-			i[j] -= 32;
-			j++;
-	}
-	return (i);
+int i;
+for (i = 0; s[i] != '\0'; i++)
+{
+if (s[0] > 96 && s[0] < 123)
+s[0] = s[0] - 32;
+if (s[i] == '.' || s[i] == 9 || s[i] == '\n' || s[i] == ',' || s[i] == ';' ||
+s[i] == '!' || s[i] == '?' || s[i] == '"' || s[i] == '(' || s[i] == ')' ||
+s[i] == '{' || s[i] == '}' || s[i] == ' ')
+{
+if (s[i + 1] > 96 && s[i + 1] < 123)
+s[i + 1] = s[i + 1] - 32;
+}
+}
+return (s);
 }
