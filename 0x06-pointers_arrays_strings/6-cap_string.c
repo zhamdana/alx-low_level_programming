@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  **cap_string - do something
  *@s: do somerhing
