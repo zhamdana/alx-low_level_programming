@@ -2,50 +2,49 @@
 #include "main.h"
 /**
  * infinite_add - adds two numbers
- * @n1: number one.
- * @n2: number two.
- * @r: buffer that the function will use to store the result.
+ * @n1: number
+ * @n2: number
+ * @r: buffer store result.
  * @size_r: buffer size:
- * Return: the pointer to dest.
+ * Return: returns selected value
  */
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int c1 = 0, c2 = 0, add = 0, op, bg, dr1, dr2;
+	int a = 0, b = 0, sum = 0, i, j, k, l;
 
-	while (*(n1 + c1) != '\0')
-		c1++;
-	while (*(n2 + c2) != '\0')
-		c2++;
-	if (c1 >= c2)
-		bg = c1;
+	while (*(n1 + a) != '\0')
+		a++;
+	while (*(n2 + b) != '\0')
+		b++;
+	if (a >= b)
+		j = a;
 	else
-		bg = c2;
-	if (size_r <= bg + 1)
+		j = b;
+	if (size_r <= j + 1)
 		return (0);
-	r[bg + 1] = '\0';
-	c1--, c2--, size_r--;
-	dr1 = *(n1 + c1) - 48, dr2 = *(n2 + c2) - 48;
-	while (bg >= 0)
+	r[j + 1] = '\0';
+	a--, b--, size_r--;
+	k = *(n1 + a) - 48, l = *(n2 + b) - 48;
+	while (j >= 0)
 	{
-		op = dr1 + dr2 + add;
-		if (op >= 10)
-			add = op / 10;
+		i = k + l + sum;
+		if (i >= 10)
+			sum = i / 10;
 		else
-			add = 0;
-		if (op > 0)
-		*(r + bg) = (op % 10) + 48;
+			sum = 0;
+		if (i > 0)
+		*(r + j) = (i % 10) + 48;
 		else
-			*(r + bg) = '0';
-		if (c1 > 0)
-			c1--, dr1 = *(n1 + c1) - 48;
+			*(r + j) = '0';
+		if (a > 0)
+			a--, k = *(n1 + a) - 48;
 		else
-			dr1 = 0;
-		if (c2 > 0)
-			c2--, dr2 = *(n2 + c2) - 48;
+			k = 0;
+		if (b > 0)
+			b--, l = *(n2 + b) - 48;
 		else
-			dr2 = 0;
-		bg--, size_r--;
+			l = 0;
+		j--, size_r--;
 	}
 	if (*(r) == '0')
 		return (r + 1);
