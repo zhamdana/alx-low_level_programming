@@ -31,7 +31,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		else
 			sum = 0;
 		if (i > 0)
-		*(r + j) = (i % 10) + 48;
+			*(r + j) = (i % 10) + 48;
 		else
 			*(r + j) = '0';
 		if (a > 0)
