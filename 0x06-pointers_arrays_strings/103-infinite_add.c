@@ -29,7 +29,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	while (j >= 0)
 	{
 		i = k + l + sum;
-		if (i > 11)
+		if (i >= 10)
 			sum = i / 10;
 		else
 			sum = 0;
