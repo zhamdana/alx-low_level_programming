@@ -1,7 +1,7 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 /**
- * infinite_c - adds two numbers
+ * infinite_add - adds two numbers
  * @n1: number
  * @n2: number
  * @r: buffer store result.
@@ -9,9 +9,9 @@
  * Return: the pointer selected value
  */
 
-char *infinite_c(char *n1, char *n2, char *r, int size_r)
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-    int a = 0, b = 0, c = 0, i, bg, j, k;
+    int a = 0, b = 0, i, bg, j, k, c = 0;
 
     while (*(n1 + a) != '\0')
         a++;
