@@ -13,19 +13,15 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int a = 0, b = 0, sum = 0;
 	int i, j, k, l;
 
-	while (*(n1 + a) != '\0')
-		a++;
-	while (*(n2 + b) != '\0')
-		b++;
+	for (; *(n1 + a) != '\0'; a++)
+	for (; *(n2 + b) != '\0'; b++)
 	if (a >= b)
 		j = a;
 	else
 		j = b;
 	if (size_r <= j + 1)
 		return (0);
-	r[j + 1] = '\0';
-	a--, b--, size_r--;
-	k = *(n1 + a) - 48, l = *(n2 + b) - 48;
+	r[j + 1] = '\0', a--, b--, size_r--, k = *(n1 + a) - 48, l = *(n2 + b) - 48;
 	while (j >= 0)
 	{
 		i = k + l + sum;
@@ -52,4 +48,3 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	else
 		return (r);
 }
-
