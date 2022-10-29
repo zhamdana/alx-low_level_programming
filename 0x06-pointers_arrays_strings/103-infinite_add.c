@@ -22,9 +22,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		j = b;
 	if (size_r <= j + 1)
 		return (0);
-	r[j + 1] = '\0';
-	a--, b--, size_r--;
-	k = *(n1 + a) - 48, l = *(n2 + b) - 48;
+	r[j + 1] = '\0', a--, b--, size_r--, k = *(n1 + a) - 48, l = *(n2 + b) - 48;
 	while (j >= 0)
 	{
 		i = k + l + sum;
