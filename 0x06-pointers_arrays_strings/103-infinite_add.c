@@ -21,9 +21,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	if (size_r <= j + 1)
 		return (0);
 	r[j + 1] = '\0', a--, b--, size_r--, k = *(n1 + a) - 48, l = *(n2 + b) - 48;
-	while (j >= 0)
+	for (; j >= 0; i = k + l + sum)
 	{
-		i = k + l + sum;
 		if (i >= 10 || a > 0)
 			sum = i / 10, a--, k = *(n1 + a) - 48;
 		else
@@ -31,7 +30,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		if (i > 0 || b > 0)
 			*(r + j) = (i % 10) + 48, b--, l = *(n2 + b) - 48;
 		else
-			*(r + j) = '0', l = 0, j--, size_r--;
+			*(r + j) = '0', l = 0;
+		j--, size_r--;
 	}
 	if (*(r) == '0')
 		return (r + 1);
