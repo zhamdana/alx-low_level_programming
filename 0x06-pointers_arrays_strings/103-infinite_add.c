@@ -26,22 +26,14 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	while (j >= 0)
 	{
 		i = k + l + sum;
-		if (i >= 10)
-			sum = i / 10;
+		if ((i >= 10) || (a > 0))
+			sum = i / 10, a--, k = *(n1 + a) - 48;
 		else
-			sum = 0;
-		if (i > 0)
-			*(r + j) = (i % 10) + 48;
+			sum = 0, k = 0;
+		if ((i > 0) || (b > 0))
+			*(r + j) = (i % 10) + 48, b--, l = *(n2 + b) - 48;
 		else
-			*(r + j) = '0';
-		if (a > 0)
-			a--, k = *(n1 + a) - 48;
-		else
-			k = 0;
-		if (b > 0)
-			b--, l = *(n2 + b) - 48;
-		else
-			l = 0;
+			*(r + j) = '0', l = 0;
 		j--, size_r--;
 	}
 	if (*(r) == '0')
