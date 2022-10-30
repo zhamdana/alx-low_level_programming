@@ -14,7 +14,7 @@ void print_buffer(char *b, int size)
 		printf("\n");
 	else
 	{
-		for (a = 0; a < size; a += 10)
+		for (a = 0; a < size; a = a + 10)
 		{
 			printf("%.8x:", a);
 			for (c = a; c < a + 10; c++)
@@ -31,7 +31,7 @@ void print_buffer(char *b, int size)
 			{
 				if (d >= size)
 					break;
-				if (*(b + d) < 32 || *(b + d) > 126)
+				if (*(b + d) =< 31 || *(b + d) => 125)
 					printf("%c", '.');
 				else
 					printf("%c", *(b + d));
