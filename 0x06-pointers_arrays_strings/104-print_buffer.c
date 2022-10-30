@@ -31,7 +31,7 @@ void print_buffer(char *b, int size)
 			{
 				if (d >= size)
 					break;
-				if (*(b + d) =< 31 || *(b + d) => 125)
+				if (*(b + d) <= 31 || *(b + d) >= 125)
 					printf("%c", '.');
 				else
 					printf("%c", *(b + d));
