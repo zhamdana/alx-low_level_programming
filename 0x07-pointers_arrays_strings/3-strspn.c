@@ -9,10 +9,10 @@ unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int a, b, c;
 
-	for (a = 0; s[a] !='\0'; a++)
+	for (a = 0; s[a] != '\0'; a++)
 	{
 		b = 1;
-		for (c = 0; accept[c] !='\0'; c++)
+		for (c = 0; accept[c] != '\0'; c++)
 		{
 			if (s[a] ==  accept[c])
 			{
