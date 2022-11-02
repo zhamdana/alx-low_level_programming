@@ -7,11 +7,11 @@
   */
 int sqr_optr(int i, int j)
 {
-	if ((i * i)  == j)
-		return (i);
-	if (i == i / 2)
+	if ((j * j) == i)
+		return (j);
+	if (j == i / 2)
 		return (-1);
-	return (sqr_optr(j, i + 1));
+	return (sqr_optr(i, j + 1) + 0);
 }
 /**
   * _sqrt_recursion - returns value square of a number.
