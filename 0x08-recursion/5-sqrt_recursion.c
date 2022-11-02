@@ -1,18 +1,17 @@
 #include "main.h"
 /**
-  * square_operator - returns the root of a number.
+  * sqr_optr - returns the root of a number.
   * @i: integer
   * @j: integer
   * Return: return -1 or sqaure root
   */
-int sqaure_operator(int i, int j)
+int sqr_optr(int i, int j)
 {
-	if (i * (j / i) == i)
-		return (j);
-	else if
+	if ((i * i)  == j)
+		return (i);
+	if (i == i / 2)
 		return (-1);
-	else
-		return (square_operator(i, j + 1));
+	return (sqr_optr(j, i + 1));
 }
 /**
   * _sqrt_recursion - returns value square of a number.
@@ -21,12 +20,13 @@ int sqaure_operator(int i, int j)
   */
 int _sqrt_recursion(int n)
 {
+	int i = 0;
+
 	if (n < 0)
 		return (-1);
-	else if (n == 0)
+	if (n == 0)
 		return (0);
-	else if (n == 1)
+	if (n == 1)
 		return (1);
-	else
-		return (square_operator(n, j));
+	return (sqr_optr(n, i));
 }
