@@ -3,7 +3,7 @@
 /**
  * str_concat - concatenates two strings
  * @s1: string
- * @s2: string 
+ * @s2: string
  * Return: s1, s2, or null
  */
 char *str_concat(char *s1, char *s2)
