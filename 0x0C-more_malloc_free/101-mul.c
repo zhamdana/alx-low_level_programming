@@ -1,126 +1,112 @@
 #include "main.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
-
 /**
- * _is_zero - determines if any number is zero
- * @argv: argument vector.
- *
- * Return: no return.
+ * zero_finder - find numbers that are zero
+ * @argv: vector argument
  */
-void _is_zero(char *argv[])
+void zero_finder(char *argv[])
 {
-	int i, isn1 = 1, isn2 = 1;
+	int n, n1 = 1, n2 = 1;
 
-	for (i = 0; argv[1][i]; i++)
-		if (argv[1][i] != '0')
+	for (n = 0; argv[1][n]; n++)
+		if (argv[1][n] != '0')
 		{
-			isn1 = 0;
+			n1 = 0;
 			break;
 		}
-
-	for (i = 0; argv[2][i]; i++)
-		if (argv[2][i] != '0')
+	for (n = 0; argv[2][n]; n++)
+		if (argv[2][n] != '0')
 		{
-			isn2 = 0;
+			n2 = 0;
 			break;
 		}
-
-	if (isn1 == 1 || isn2 == 1)
+	if (n1 == 1 || n2 == 1)
 	{
 		printf("0\n");
 		exit(0);
 	}
 }
-
 /**
- * _initialize_array - set memery to zero in a new array
- * @ar: char array.
- * @lar: length of the char array.
- *
- * Return: pointer of a char array.
+ * array_initializer - make new array memory 0
+ * @ary: character array
+ * @l: character array length
+ * Return: return pinter
  */
-char *_initialize_array(char *ar, int lar)
+char *array_initializer(char *ary, int l)
 {
-	int i = 0;
+	int n = 0;
 
-	for (i = 0; i < lar; i++)
-		ar[i] = '0';
-	ar[lar] = '\0';
-	return (ar);
+	for (n = 0; n < l; n++)
+		ary[n] = '0';
+	ary[l] = '\0';
+	return (ary);
 }
-
 /**
- * _checknum - determines length of the number
- * and checks if number is in base 10.
- * @argv: arguments vector.
- * @n: row of the array.
- *
- * Return: length of the number.
+ * check_number - check number length and if base 10
+ * @argv: arguments vector
+ * @n: array row
+ * Return: return number length
  */
-int _checknum(char *argv[], int n)
+int check_number(char *argv[], int n)
 {
-	int ln;
+	int l;
 
-	for (ln = 0; argv[n][ln]; ln++)
-		if (!isdigit(argv[n][ln]))
+	for (l = 0; argv[n][l]; l++)
+		if (!isdigit(argv[n][l]))
 		{
 			printf("Error\n");
 			exit(98);
 		}
-
-	return (ln);
+	return (l);
 }
-
 /**
- * main - Entry point.
- * program that multiplies two positive numbers.
+ * main - entry point for multiplying two positive numbers
  * @argc: number of arguments.
  * @argv: arguments vector.
- *
- * Return: 0 - success.
+ * Return: return integer
  */
 int main(int argc, char *argv[])
 {
-	int ln1, ln2, lnout, add, addl, i, j, k, ca;
-	char *nout;
+	int l1, l2, i, j, sum, sumt, x, y, z;
+	char *a;
 
 	if (argc != 3)
 		printf("Error\n"), exit(98);
-	ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
-	_is_zero(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
-	if (nout == NULL)
+	l1 = check_number(argv, 1), l2 = check_number(argv, 2);
+	zero_finder(argv), i = l1 + l2, a = malloc(i + 1);
+	if (a == NULL)
 		printf("Error\n"), exit(98);
-	nout = _initialize_array(nout, lnout);
-	k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
-	for (; k >= 0; k--, i--)
+	a = array_initializer(a, i);
+	z = i - 1, x = l1 - 1, y = l2 - 1, j = sumt = 0;
+	for (; z >= 0; z--, x--)
 	{
-		if (i < 0)
+		if (x < 0)
 		{
-			if (addl > 0)
+			if (sumt > 0)
 			{
-				add = (nout[k] - '0') + addl;
-				if (add > 9)
-					nout[k - 1] = (add / 10) + '0';
-				nout[k] = (add % 10) + '0';
+				sum = (a[z] - '0') + sumt;
+				if (sum > 9)
+					a[z - 1] = (sum / 10) + '0';
+				a[z] = (sum % 10) + '0';
 			}
-			i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
+			x = l1 - 1, y--, sumt = 0, j++, z = i - (1 + j);
 		}
-		if (j < 0)
+		if (y < 0)
 		{
-			if (nout[0] != '0')
+			if (a[0] != '0')
 				break;
-			lnout--;
-			free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
-			k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
+			i--;
+			free(a), a = malloc(i + 1), a = array_initializer(a, i);
+			z = i - 1, x = l1 - 1, y = l2 - 1, j = sumt = 0;
 		}
-		if (j >= 0)
+		if (y >= 0)
 		{
-			add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
-			addl = add / 10, nout[k] = (add % 10) + '0';
+			sum = ((argv[1][x] - '0') * (argv[2][y] - '0')) + (a[z] - '0') + sumt;
+			sumt = sum / 10, a[z] = (sum % 10) + '0';
 		}
 	}
-	printf("%s\n", nout);
+	printf("%s\n", a);
 	return (0);
 }
