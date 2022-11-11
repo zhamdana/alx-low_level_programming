@@ -1,164 +1,126 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-/**
- * check_number - check number length
- * @s: string measure
- * Return: return number length
- */
-int check_number(char *s)
-{
-	int l = 0;
+#include <ctype.h>
 
-	while (*s++)
-		l++;
-	return (l);
-}
 /**
- * array_initializer - make new array and initialise it
- * @s: array size
- * Return: return pinter
+ * _is_zero - determines if any number is zero
+ * @argv: argument vector.
+ *
+ * Return: no return.
  */
-char *array_initializer(int s)
+void _is_zero(char *argv[])
 {
-	char *a;
-	int i;
+	int i, isn1 = 1, isn2 = 1;
 
-	a = malloc(sizeof(char) * s);
-	if (a == NULL)
-		exit(98);
-	for (i = 0; i < (s - 1); i++)
-		a[i] = 'a';
-	a[i] = '\0';
-	return (a);
-}
-/**
- * zero_finder - find none 0 numbers
- * @s: string numbers
- * Return: return a string
- */
-char *zero_finder(char *s)
-{
-	while (*s && *s == '0')
-		s++;
-	return (s);
-}
-/**
- * find_digit - transform character digit to int
- * @a: character to transform
- * Return: return integer
- */
-int find_digit(char a)
-{
-	int d = a - '0';
+	for (i = 0; argv[1][i]; i++)
+		if (argv[1][i] != '0')
+		{
+			isn1 = 0;
+			break;
+		}
 
-	if (d < 0 || d > 9)
+	for (i = 0; argv[2][i]; i++)
+		if (argv[2][i] != '0')
+		{
+			isn2 = 0;
+			break;
+		}
+
+	if (isn1 == 1 || isn2 == 1)
 	{
-		printf("Error\n");
-		exit(98);
+		printf("0\n");
+		exit(0);
 	}
-	return (d);
 }
-/**
- * find_prod - multiply number string by single digit
- * @p: storage buffer
- * @m: number string
- * @d: single digit
- * @z: leading zeroes
- */
-void find_prod(char *p, char *m, int d, int z)
-{
-	int ml, n, t = 0;
 
-	ml = check_number(m) - 1;
-	m += ml;
-	while (*p)
-	{
-		*p = 'a', p++;
-	}
-	p--;
-	while (z--)
-	{
-		*p = '0', p--;
-	}
-	for (; ml >= 0; ml--, m--, p--)
-	{
-		if (*m < '0' || *m > '9')
+/**
+ * _initialize_array - set memery to zero in a new array
+ * @ar: char array.
+ * @lar: length of the char array.
+ *
+ * Return: pointer of a char array.
+ */
+char *_initialize_array(char *ar, int lar)
+{
+	int i = 0;
+
+	for (i = 0; i < lar; i++)
+		ar[i] = '0';
+	ar[lar] = '\0';
+	return (ar);
+}
+
+/**
+ * _checknum - determines length of the number
+ * and checks if number is in base 10.
+ * @argv: arguments vector.
+ * @n: row of the array.
+ *
+ * Return: length of the number.
+ */
+int _checknum(char *argv[], int n)
+{
+	int ln;
+
+	for (ln = 0; argv[n][ln]; ln++)
+		if (!isdigit(argv[n][ln]))
 		{
 			printf("Error\n");
 			exit(98);
 		}
-		n = (*m - '0') * d, n += t, *p = (n % 10) + '0', t = n / 10;
-	}
-	if (t)
-		*p = (t % 10) + '0';
-}
-/**
- * sum_num - add two string stored numbers
- * @fprod: storage of final running product
- * @nprod: next addition of product
- * @nl: length of next addition of product
- */
-void sum_num(char *fprod, char *nprod, int nl)
-{
-	int num, tens = 0;
 
-	while (*(fprod + 1))
-		fprod++;
-	while (*(nprod + 1))
-		nprod++;
-	for (; *fprod != 'a'; fprod--)
-	{
-		num = (*fprod - '0') + (*nprod - '0'), num += tens, *fprod = (num % 10) + '0';
-		tens = num / 10, nprod--, nl--;
-	}
-	for (; nl >= 0 && *nprod != 'a'; nl--)
-	{
-		num = (*nprod - '0'), num += tens, *fprod = (num % 10) + '0';
-		tens = num / 10, fprod--, nprod--;
-	}
-	if (tens)
-		*fprod = (tens % 10) + '0';
+	return (ln);
 }
+
 /**
- * main - multiply two positive numbers
- * @argv: arguments passed to the program
- * @argc: pointer array
- * Return: return integer
+ * main - Entry point.
+ * program that multiplies two positive numbers.
+ * @argc: number of arguments.
+ * @argv: arguments vector.
+ *
+ * Return: 0 - success.
  */
 int main(int argc, char *argv[])
 {
-	char *fprod, *nprod;
-	int s, i, d, z = 0;
+	int ln1, ln2, lnout, add, addl, i, j, k, ca;
+	char *nout;
 
 	if (argc != 3)
+		printf("Error\n"), exit(98);
+	ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
+	_is_zero(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
+	if (nout == NULL)
+		printf("Error\n"), exit(98);
+	nout = _initialize_array(nout, lnout);
+	k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
+	for (; k >= 0; k--, i--)
 	{
-		printf("Error\n");
-		exit(98);
+		if (i < 0)
+		{
+			if (addl > 0)
+			{
+				add = (nout[k] - '0') + addl;
+				if (add > 9)
+					nout[k - 1] = (add / 10) + '0';
+				nout[k] = (add % 10) + '0';
+			}
+			i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
+		}
+		if (j < 0)
+		{
+			if (nout[0] != '0')
+				break;
+			lnout--;
+			free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
+			k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
+		}
+		if (j >= 0)
+		{
+			add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
+			addl = add / 10, nout[k] = (add % 10) + '0';
+		}
 	}
-	if (*(argv[1]) == '0')
-		argv[1] = zero_finder(argv[1]);
-	if (*(argv[2]) == '0')
-		argv[2] = zero_finder(argv[2]);
-	if (*(argv[1]) == '\0' || *(argv[2]) == '\0')
-	{
-		printf("0\n");
-		return (0);
-	}
-	s = check_number(argv[1]) + check_number(argv[2]);
-	fprod = array_initializer(s + 1);
-	nprod = array_initializer(s + 1);
-	for (i = check_number(argv[2]) - 1; i >= 0; i--)
-	{
-		d = find_digit(*(argv[2] + i)), find_prod(nprod, argv[1], d, z++), sum_num(fprod, nprod, s - 1);
-	}
-	for (i = 0; fprod[i]; i++)
-	{
-		if (fprod[i] != 'a')
-			putchar(fprod[i]);
-	}
-	putchar('\n');
-	free(nprod);
-	free(fprod);
+	printf("%s\n", nout);
 	return (0);
 }
