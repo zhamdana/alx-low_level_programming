@@ -2,10 +2,10 @@
 /**
   * print_name - print name
   * @name: input name
-  * @f: finction pointer
+  * @f: function pointer
   */
 void print_name(char *name, void (*f)(char *))
 {
-	if (f && name)
+	if (name && f)
 		f(name);
 }
